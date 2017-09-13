@@ -19,7 +19,6 @@ FOSSIL  =
 FOSSIL += vc-fossil
 
 SVN  =
-SVN += caml
 SVN += cg
 SVN += clang-format
 SVN += confluence
@@ -62,7 +61,6 @@ clone:
 	@echo "Cloning fossil repositories..."
 	fossil/clone.sh vc-fossil http://chiselapp.com/user/venks/repository/emacs-fossil
 	@echo "Cloning svn repositories..."
-	git svn clone https://caml.inria.fr/svn/ocaml/trunk/emacs/ svn/caml
 	git svn clone https://beta.visl.sdu.dk/svn/visl/tools/vislcg3/trunk/emacs svn/cg
 	git svn clone http://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format svn/clang-format
 	git svn clone https://svn.code.sf.net/p/confluence-el/code/trunk/ svn/confluence
