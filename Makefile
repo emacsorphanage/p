@@ -16,7 +16,6 @@ DARCS += darcsum
 DARCS += tex-smart-umlauts
 
 FOSSIL  =
-FOSSIL += vc-fossil
 
 SVN  =
 SVN += cg
@@ -59,7 +58,6 @@ clone:
 	darcs/clone.sh darcsum https://hub.darcs.net/simon/darcsum
 	darcs/clone.sh tex-smart-umlauts https://hub.darcs.net/lyro/tex-smart-umlauts
 	@echo "Cloning fossil repositories..."
-	fossil/clone.sh vc-fossil http://chiselapp.com/user/venks/repository/emacs-fossil
 	@echo "Cloning svn repositories..."
 	git svn clone https://beta.visl.sdu.dk/svn/visl/tools/vislcg3/trunk/emacs svn/cg
 	git svn clone http://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format svn/clang-format
