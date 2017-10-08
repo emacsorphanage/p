@@ -15,8 +15,6 @@ DARCS  =
 DARCS += darcsum
 DARCS += tex-smart-umlauts
 
-FOSSIL  =
-
 SVN  =
 SVN += cg
 SVN += clang-format
@@ -28,7 +26,7 @@ SVN += dic-lookup-w3m
 SVN += helm-ls-svn
 SVN += ruby-additional
 
-.PHONY: all $(BZR) $(CVS) $(DARCS) $(FOSSIL) $(SVN)
+.PHONY: all $(BZR) $(CVS) $(DARCS) $(SVN)
 .FORCE:
 
 help:
@@ -36,7 +34,6 @@ help:
 	$(info make update   - update all repositories)
 	$(info make bzr      - update bzr repositories)
 	$(info make cvs      - update cvs repositories)
-	$(info make fossil   - update fossil repositories)
 	$(info make svn      - update svn repositories, except...)
 	$(info make svn/dsvn - update dsvn repository (very slow))
 	@echo
@@ -57,7 +54,6 @@ clone:
 	@echo "Cloning darcs repositories..."
 	darcs/clone.sh darcsum https://hub.darcs.net/simon/darcsum
 	darcs/clone.sh tex-smart-umlauts https://hub.darcs.net/lyro/tex-smart-umlauts
-	@echo "Cloning fossil repositories..."
 	@echo "Cloning svn repositories..."
 	git svn clone https://beta.visl.sdu.dk/svn/visl/tools/vislcg3/trunk/emacs svn/cg
 	git svn clone http://llvm.org/svn/llvm-project/cfe/trunk/tools/clang-format svn/clang-format
@@ -69,7 +65,7 @@ clone:
 
 # update ###############################
 
-update: bzr cvs fossil svn
+update: bzr cvs svn
 
 ## bzr #################################
 
@@ -102,15 +98,6 @@ darcs/%: .FORCE
 	@echo "\nUpdating $@..."
 	@darcs/update.sh $(@:darcs/%=%)
 	@cd $@/$(@:darcs/%=%)_git && git push -f git@github.com:emacsorphanage/$(@:darcs/%=%).git master
-
-## fossil ##############################
-
-fossil: $(addprefix fossil/,$(FOSSIL))
-
-fossil/%: .FORCE
-	@echo "\nUpdating $@..."
-	@fossil/update.sh $(@:fossil/%=%)
-	@cd $@/$(@:fossil/%=%)_git && git push -f git@github.com:emacsorphanage/$(@:fossil/%=%).git trunk:master
 
 ## svn #################################
 
