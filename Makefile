@@ -8,7 +8,6 @@ BZR += text-translator
 BZR += vm
 
 CVS  =
-CVS += swbuff
 CVS += w3m # contains shimbun
 
 DARCS  =
@@ -50,7 +49,6 @@ clone:
 	git clone bzr::https://code.launchpad.net/vm bzr/vm
 	@echo "Cloning cvs repositories..."
 	git cvsimport -v -C cvs/w3m -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot emacs-w3m
-	git cvsimport -v -C cvs/swbuff -d :pserver:anonymous@emhacks.cvs.sourceforge.net:/cvsroot/emhacks emhacks
 	@echo "Cloning darcs repositories..."
 	darcs/clone.sh darcsum https://hub.darcs.net/simon/darcsum
 	darcs/clone.sh tex-smart-umlauts https://hub.darcs.net/lyro/tex-smart-umlauts
@@ -83,11 +81,6 @@ cvs: $(addprefix cvs/,$(CVS))
 cvs/w3m: .FORCE
 	@echo "\nUpdating $@..."
 	@cd $@ && time git cvsimport -v -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot emacs-w3m
-	@cd $@ && git push -f git@github.com:emacsorphanage/$(@:cvs/%=%).git master
-
-cvs/swbuff: .FORCE
-	@echo "\nUpdating $@..."
-	@cd $@ && time git cvsimport -v -d :pserver:anonymous@emhacks.cvs.sourceforge.net:/cvsroot/emhacks emhacks
 	@cd $@ && git push -f git@github.com:emacsorphanage/$(@:cvs/%=%).git master
 
 ## darcs ###############################
