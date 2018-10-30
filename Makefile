@@ -5,7 +5,10 @@ BZR  =
 BZR += color-theme
 BZR += nxhtml
 BZR += text-translator
-BZR += vm
+# There was a, likely accidental, purge of many libraries.
+# Don't update until maintainer has responded to my request
+# for clarification.
+# BZR += vm
 
 CVS  =
 CVS += w3m # contains shimbun
