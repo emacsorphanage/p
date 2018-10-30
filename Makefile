@@ -2,7 +2,6 @@
 # This file is intentionally left stupid.
 
 BZR  =
-BZR += color-theme
 BZR += nxhtml
 BZR += text-translator
 # There was a, likely accidental, purge of many libraries.
@@ -45,7 +44,6 @@ clone:
 	@echo "This takes a very very long time..."
 	@echo
 	@echo "Cloning bzr repositories..."
-	git clone bzr::https://bzr.savannah.gnu.org/r/color-theme/trunk bzr/color-theme
 	git clone bzr::https://code.launchpad.net/~nxhtml/nxhtml/main bzr/nxhtml
 	git clone bzr::https://code.launchpad.net/~khiker/+junk/text-translator bzr/text-translator
 	git clone bzr::https://code.launchpad.net/vm bzr/vm
