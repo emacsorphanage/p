@@ -26,7 +26,6 @@ SVN += dic-lookup-w3m
 # there actually are no relevant new commits.
 # SVN += dsvn
 SVN += helm-ls-svn
-SVN += ruby-additional
 
 .PHONY: all $(BZR) $(CVS) $(DARCS) $(SVN)
 .FORCE:
@@ -62,7 +61,6 @@ clone:
 	git svn clone https://svn.osdn.jp/svnroot/dic-lookup-w3m/ svn/dic-lookup-w3m
 	git svn clone https://svn.apache.org/repos/asf/subversion/trunk/contrib/client-side/emacs svn/dsvn
 	git svn clone https://svn.macports.org/repository/macports/users/chunyang/helm-ls-svn.el svn/helm-ls-svn
-	git svn clone https://svn.ruby-lang.org/repos/ruby/trunk/misc/ svn/ruby-additional
 
 # update ###############################
 
