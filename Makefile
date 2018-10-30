@@ -3,7 +3,6 @@
 
 BZR  =
 BZR += nxhtml
-BZR += text-translator
 # There was a, likely accidental, purge of many libraries.
 # Don't update until maintainer has responded to my request
 # for clarification.
@@ -45,7 +44,6 @@ clone:
 	@echo
 	@echo "Cloning bzr repositories..."
 	git clone bzr::https://code.launchpad.net/~nxhtml/nxhtml/main bzr/nxhtml
-	git clone bzr::https://code.launchpad.net/~khiker/+junk/text-translator bzr/text-translator
 	git clone bzr::https://code.launchpad.net/vm bzr/vm
 	@echo "Cloning cvs repositories..."
 	git cvsimport -v -C cvs/w3m -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot emacs-w3m
