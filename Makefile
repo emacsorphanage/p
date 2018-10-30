@@ -33,6 +33,7 @@ help:
 	$(info make update   - update all repositories)
 	$(info make bzr      - update bzr repositories)
 	$(info make cvs      - update cvs repositories)
+	$(info make darcs    - update darcs repositories)
 	$(info make svn      - update svn repositories, except...)
 	$(info make svn/dsvn - update dsvn repository (very slow))
 	@echo
@@ -60,7 +61,7 @@ clone:
 
 # update ###############################
 
-update: bzr cvs svn
+update: bzr cvs darcs svn
 
 ## bzr #################################
 
