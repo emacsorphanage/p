@@ -8,9 +8,6 @@ BZR += nxhtml
 # for clarification.
 # BZR += vm
 
-CVS  =
-CVS += w3m # contains shimbun
-
 DARCS  =
 DARCS += darcsum
 DARCS += tex-smart-umlauts
@@ -25,14 +22,13 @@ SVN += dic-lookup-w3m
 # SVN += dsvn
 SVN += helm-ls-svn
 
-.PHONY: all $(BZR) $(CVS) $(DARCS) $(SVN)
+.PHONY: all $(BZR) $(DARCS) $(SVN)
 .FORCE:
 
 help:
 	$(info make clone    - initial setup)
 	$(info make update   - update all repositories)
 	$(info make bzr      - update bzr repositories)
-	$(info make cvs      - update cvs repositories)
 	$(info make darcs    - update darcs repositories)
 	$(info make svn      - update svn repositories, except...)
 	$(info make svn/dsvn - update dsvn repository (very slow))
@@ -46,8 +42,6 @@ clone:
 	@echo "Cloning bzr repositories..."
 	git clone bzr::https://code.launchpad.net/~nxhtml/nxhtml/main bzr/nxhtml
 	git clone bzr::https://code.launchpad.net/vm bzr/vm
-	@echo "Cloning cvs repositories..."
-	git cvsimport -v -C cvs/w3m -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot emacs-w3m
 	@echo "Cloning darcs repositories..."
 	darcs/clone.sh darcsum https://hub.darcs.net/simon/darcsum
 	darcs/clone.sh tex-smart-umlauts https://hub.darcs.net/lyro/tex-smart-umlauts
@@ -61,7 +55,7 @@ clone:
 
 # update ###############################
 
-update: bzr cvs darcs svn
+update: bzr darcs svn
 
 ## bzr #################################
 
@@ -71,15 +65,6 @@ bzr/%: .FORCE
 	@echo "\nUpdating $@..."
 	@cd $@ && git pull
 	@cd $@ && git push -f git@github.com:emacsorphanage/$(@:bzr/%=%).git master
-
-## cvs #################################
-
-cvs: $(addprefix cvs/,$(CVS))
-
-cvs/w3m: .FORCE
-	@echo "\nUpdating $@..."
-	@cd $@ && time git cvsimport -v -d :pserver:anonymous@cvs.namazu.org:/storage/cvsroot emacs-w3m
-	@cd $@ && git push -f git@github.com:emacsorphanage/$(@:cvs/%=%).git master
 
 ## darcs ###############################
 
