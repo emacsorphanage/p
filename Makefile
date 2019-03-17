@@ -2,7 +2,6 @@
 # This file is intentionally left stupid.
 
 BZR  =
-BZR += nxhtml
 # There was a, likely accidental, purge of many libraries.
 # Don't update until maintainer has responded to my request
 # for clarification.
@@ -28,7 +27,6 @@ clone:
 	@echo "This takes a very very long time..."
 	@echo
 	@echo "Cloning bzr repositories..."
-	git clone bzr::https://code.launchpad.net/~nxhtml/nxhtml/main bzr/nxhtml
 	git clone bzr::https://code.launchpad.net/vm bzr/vm
 	@echo "Cloning svn repositories..."
 	git svn clone https://svn.code.sf.net/p/confluence-el/code/trunk/ svn/confluence
